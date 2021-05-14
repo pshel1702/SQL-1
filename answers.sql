@@ -269,3 +269,87 @@ Write a query that fetches the id of the customer whose email is
 
 
 select id from customers where email='pclark74@gmail.com';
+
+
+==========
+20
+
+-----
+
+Write a query that shows the id, status and order_total for all orders 
+made by customer 100.
+
+-----
+
+
+select orders.id, status, order_total from customers join orders on (customers.id=customer_id) where customers.id=100;
+
+
+==========
+21
+
+-----
+
+Write a single query that shows the id, status, and order total for all
+orders made by 'pclark74@gmail.com'. Use a subselect to do this.
+
+
+-----
+
+
+select id,status,order_total from orders where customer_id = (select id from customers where email='pclark74@gmail.com');
+
+
+==========
+22
+
+-----
+
+Write a query that shows the id, status, and order total for all orders
+made by 'pclark74@gmail.com'. Use a join to do this.
+
+-----
+
+
+select orders.id, status, order_total from customers join orders on (customers.id=customer_id) where customers.id=100;
+
+
+==========
+23
+
+-----
+
+Write a query that shows all columns in the order_items table for order #2725.
+
+-----
+
+
+select * from order_items where order_id=2725;
+
+
+==========
+24
+
+-----
+
+Write a query that shows the common_name, melon_type, quantity,
+unit_price and total_price for all the melons in order #2725.
+
+-----
+
+
+select common_name, melon_type, quantity, unit_price, total_price from melons join order_items on melon_id=melons.id where order_id=2725;
+
+
+==========
+25
+
+-----
+
+Write a query that shows the total amount of revenue that comes from
+internet orders.
+
+-----
+
+
+select sum(order_total) from orders where salesperson_id is NULL;
